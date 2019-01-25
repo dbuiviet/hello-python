@@ -105,4 +105,3 @@ print("The first occurence of letter 'o' in astring is located at %dth" %astring
 print(astring.count("l"))
 print(astring[3:7])
 
-
