@@ -105,3 +105,4 @@ print("The first occurence of letter 'o' in astring is located at %dth" %astring
 print(astring.count("l"))
 print(astring[3:7])
 
+print("This is a new text to push to git")
