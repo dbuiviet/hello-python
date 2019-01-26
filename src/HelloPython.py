@@ -1,3 +1,8 @@
+#!/usr/local/bin/python3
+import sys  #import sys library
+
+print(sys.platform)
+
 #msg = "hello python"
 #print(msg)
 #msg.capitalize()
