@@ -1,11 +1,16 @@
 #!/usr/local/bin/python3
 import sys  #import sys library
+from sys import argv
 
 print(sys.platform)
 
-#msg = "hello python"
-#print(msg)
-#msg.capitalize()
+msg = "hello python"
+#msg = msg.capitalize()
+print(msg)
+print(msg.upper())
+print(msg.lower())
+print(msg.title())
+
 mystring = "Hello"
 myfloat = 10.0
 myint = 20
@@ -36,7 +41,18 @@ for x in mylist:
 
 numbers = [1,2,3]
 strings = ["a","b","c"]
-names = ["Dũng","Hạnh", "Hòa"]
+names = ["Dũng", "Hạnh", "Hòa", "Hiếu", "Hà"]
+print(names[-1]) #Prints the last element in the list
+names.insert(1,"Vinh")
+print(names)
+del names[1]
+print(names)
+names.remove(names[2])
+print(names)
+poped_name = names.pop(1)
+poped_name_last = names.pop()
+print(poped_name)
+print(poped_name_last)
 
 second_name = names[1]
 
@@ -98,11 +114,17 @@ name = "Dũng"
 age = 38
 print("%s is %d years old." % (name, age))
 
-data = ("John", "Doe", 53.44)
+#error
+print("Happy " + str(age) + "th Birthday, " + name)
+#print("Happy %dth Birthday, %s" %(age,name))
+
+data = ("Donald", "Trump", 53.44)
 #print(len(data))
 format_string = "Hello, %s %s, your current balance is $%.4f"
-
 print(format_string %data)
+name = "John"
+if name in ["John", "Doe"]:
+    print("Your name is John or Doe")
 
 astring = "Hello World!"
 print(len(astring))
@@ -110,4 +132,86 @@ print("The first occurence of letter 'o' in astring is located at %dth" %astring
 print(astring.count("l"))
 print(astring[3:7])
 
-print("This is a new text to push to git")
+print("This is a test text to push to git")
+
+#list
+x = [1,2,3]
+y = [1,2,3]
+print(x == y) # Prints out True
+print(x is y) # Prints out False, because 'is' compares instances instead of values
+
+#for x in range(5):
+#    print(x) #print 0,1,2,3,4
+
+#for x in range(3,6):
+#    print(x) #print 3,4,5
+
+#for x in range(3,8,2):
+#    print(x) #print 3,5,7
+
+count = 0
+#while count < 5:
+#    print(count)
+#    count += 1
+while True:
+    print(count)
+    count += 1
+    if count >= 5:
+        break
+
+for x in range(10):
+    if (x%2) == 0:
+        continue
+    print(x)
+
+count2 = 0
+while (count2 < 5):
+    print(count2)
+    count2 += 1
+else:
+    print("count2 value reached %d" %count2)
+
+print("""
+There's something going on here.
+With the three double-quotes.
+We'll be able to type as much as we like.
+Even 4 lines if we want,or 5,or 6.
+""")
+
+#print("How old are you? ", end='')
+#your_age = input()
+your_age = input("How old are you? ")
+#print("How tall are you? ", end='')
+#your_height = input()
+your_height = input("How tall are you? ")
+#print("How much do you weigh? ", end='')
+#your_weight = input()
+your_weight = input("How much do you weigh? ")
+print(f"So, you are {your_age} old, {your_height} tall and {your_weight} heavy.")
+
+# pylint: disable=unbalanced-tuple-unpacking
+script_name, user_name, file_name = argv
+prompt = '> '
+
+print(f"Hi {user_name}, I'm the {script_name} script.")
+print("I'd like to ask you a few questions.")
+print(f"Do you like me {user_name}?")
+likes = input(prompt)
+
+print(f"Where do you live {user_name}?")
+lives = input(prompt)
+
+print("What kind of computer do you have?")
+computer = input(prompt)
+
+print(f"""
+Alright, so you said {likes} about liking me.
+You live in {lives}.  Not sure where that is.
+And you have a {computer} computer.  Nice.
+""")
+
+txt = open(file_name)
+print(f"Here's your file name: {file_name}")
+print("And it's content is: \n")
+print(txt.read())
+txt.close() #always to close the opened file
