@@ -1,6 +1,7 @@
 #!/usr/local/bin/python3
 import sys  #import sys library
 from sys import argv
+from os.path import exists
 
 print(sys.platform)
 
@@ -190,28 +191,69 @@ your_weight = input("How much do you weigh? ")
 print(f"So, you are {your_age} old, {your_height} tall and {your_weight} heavy.")
 
 # pylint: disable=unbalanced-tuple-unpacking
-script_name, user_name, file_name = argv
-prompt = '> '
+# script_name, user_name, file_name = argv
+# prompt = '> '
 
-print(f"Hi {user_name}, I'm the {script_name} script.")
-print("I'd like to ask you a few questions.")
-print(f"Do you like me {user_name}?")
-likes = input(prompt)
+# print(f"Hi {user_name}, I'm the {script_name} script.")
+# print("I'd like to ask you a few questions.")
+# print(f"Do you like me {user_name}?")
+# likes = input(prompt)
 
-print(f"Where do you live {user_name}?")
-lives = input(prompt)
+# print(f"Where do you live {user_name}?")
+# lives = input(prompt)
 
-print("What kind of computer do you have?")
-computer = input(prompt)
+# print("What kind of computer do you have?")
+# computer = input(prompt)
 
-print(f"""
-Alright, so you said {likes} about liking me.
-You live in {lives}.  Not sure where that is.
-And you have a {computer} computer.  Nice.
-""")
+# print(f"""
+# Alright, so you said {likes} about liking me.
+# You live in {lives}.  Not sure where that is.
+# And you have a {computer} computer.  Nice.
+# """)
 
-txt = open(file_name)
-print(f"Here's your file name: {file_name}")
-print("And it's content is: \n")
-print(txt.read())
-txt.close() #always to close the opened file
+# txt = open(file_name,'r')
+# print(f"Here's your file name: {file_name}")
+# print("And it's content is: \n")
+# print(txt.read())
+# txt = open(file_name,'w') #'w' mode for writing
+# print("Let's delete the old content.")
+# txt.truncate()
+# print("Now write some new text")
+# line1 = input("Line 1: ")
+# line2 = input("Line 2: ")
+# line3 = input("Line 3: ")
+#txt.write(line1)
+#txt.write('\n')
+#txt.write(line2)
+#txt.write('\n')
+#txt.write(line3)
+#txt.write('\n')
+# txt.write(f"{line1}\n{line2}\n {line3}\n")
+# print("Now close/save the file")
+# txt.close() #always to close the opened file
+
+#copy content from a file to a file
+script_name, from_file, to_file = argv
+print(f"We are writing from {from_file} to {to_file}")
+temp_file = open(from_file, 'r')
+temp_data = temp_file.read()
+print(f"The input file has {len(temp_data)} bytes long")
+temp_file.close()
+
+print(f"Does the output file exist? {exists(to_file)}")
+print("Ready, hit Return to continue, Ctrl-C to abort")
+input() #waiting user keystroke to continue
+temp_file = open(to_file,'w')
+temp_file.write(temp_data)
+temp_file.close()
+print(f"We are done with writing, check the files out!")
+
+def cheese_and_crackers(cheese_count, box_of_crackers):
+    print(f"You have {cheese_count} cheese")
+    print(f"You have {box_of_crackers} box of crackers")
+    print(f"That's enough for the weekend party.")
+
+amount_cheese = input("How many cheese you want? ")
+amount_box_crackers = input("How many box of crackers are there? ")
+cheese_and_crackers(int(amount_cheese), int(amount_box_crackers))
+
