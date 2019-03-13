@@ -233,27 +233,164 @@ print(f"So, you are {your_age} old, {your_height} tall and {your_weight} heavy."
 # txt.close() #always to close the opened file
 
 #copy content from a file to a file
-script_name, from_file, to_file = argv
-print(f"We are writing from {from_file} to {to_file}")
-temp_file = open(from_file, 'r')
-temp_data = temp_file.read()
-print(f"The input file has {len(temp_data)} bytes long")
-temp_file.close()
+# script_name, from_file, to_file = argv
+# print(f"We are writing from {from_file} to {to_file}")
+# temp_file = open(from_file, 'r')
+# temp_data = temp_file.read()
+# print(f"The input file has {len(temp_data)} bytes long")
+# temp_file.close()
 
-print(f"Does the output file exist? {exists(to_file)}")
-print("Ready, hit Return to continue, Ctrl-C to abort")
-input() #waiting user keystroke to continue
-temp_file = open(to_file,'w')
-temp_file.write(temp_data)
-temp_file.close()
-print(f"We are done with writing, check the files out!")
+# print(f"Does the output file exist? {exists(to_file)}")
+# print("Ready, hit Return to continue, Ctrl-C to abort")
+# input() #waiting user keystroke to continue
+# temp_file = open(to_file,'w')
+# temp_file.write(temp_data)
+# temp_file.close()
+# print(f"We are done with writing, check the files out!")
 
-def cheese_and_crackers(cheese_count, box_of_crackers):
-    print(f"You have {cheese_count} cheese")
-    print(f"You have {box_of_crackers} box of crackers")
-    print(f"That's enough for the weekend party.")
+# def cheese_and_crackers(cheese_count, box_of_crackers):
+#     print(f"You have {cheese_count} cheese")
+#     print(f"You have {box_of_crackers} box of crackers")
+#     print(f"That's enough for the weekend party.")
 
-amount_cheese = input("How many cheese you want? ")
-amount_box_crackers = input("How many box of crackers are there? ")
-cheese_and_crackers(int(amount_cheese), int(amount_box_crackers))
+# amount_cheese = input("How many cheese you want? ")
+# amount_box_crackers = input("How many box of crackers are there? ")
+# cheese_and_crackers(int(amount_cheese), int(amount_box_crackers))
+
+script_name, file_name = argv
+
+def print_all(f):
+    print(f.read(),end="")
+
+def print_a_line(line_count, f):
+    print(line_count, f.readline(), end="")
+
+def rewind(f):
+    f.seek(0)
+
+current_file = open(file_name)
+
+print(f"\nFirst, let's print the content of {file_name}:")
+print_all(current_file)
+
+print("\nNow rewind to the beginning of file")
+rewind(current_file)
+
+print("\nThen let's print line by line:")
+current_line = 1
+print_a_line(current_line, current_file)
+current_line += 1
+print_a_line(current_line, current_file)
+current_line += 1
+print_a_line(current_line, current_file)
+
+print ("Let's practice everything.")
+print ("You\'d need to know \'bout escapes with \\ that do \n newlines and \t tabs.")
+
+poem = """
+\tThe lovely world
+with logic so firmly planted
+cannot discern \n the needs of love
+nor comprehend passion from intuition and requires an explanation
+\n\t\twhere there is none.
+"""
+
+print ("-" * 20)
+print (poem)
+print ("-" * 20)
+
+five = 10 - 2 + 3 - 6
+#print ("This should be five: %s" % five)
+print(f"This should be five: {five}")
+
+def secret_formula(started):
+    jelly_beans = started * 500
+    jars = jelly_beans / 1000
+    crates = jars /100
+    return jelly_beans, jars, crates
+
+start_point = 10000
+beans, jars, crates = secret_formula(start_point)
+
+#This is another way to format a string 
+print ("With a starting point of: {}".format(start_point))
+#it's just like with f"" string
+print (f"We'd have {beans} beans, {jars} jars, and {crates} crates.")
+
+start_point = start_point / 10
+
+print ("We can also do that this way:")
+formula = secret_formula(start_point)
+#this is an easy way to apply a list to a format string
+print ("We'd have {} beans, {} jars, and {} crates.".format(*formula))
+
+ten_things = "Apples Oranges Crows Telephone Light Sugar"
+print("Wait, there're not 10 things in that list. Let's fix that.")
+stuff = ten_things.split(' ')
+more_stuff = ["Day", "Night", "Song", "Frisbe", 
+              "Corn", "Banana", "Girl", "Boy"]
+
+while len(stuff) != 10:
+    next_one = more_stuff.pop()
+    print("Adding ", next_one)
+    stuff.append(next_one)
+    print(f"There are {len(stuff)} items now")    
+
+print("There we go: ", stuff)
+print("Let's do something with stuff")
+print(stuff[1])
+print(stuff[-1])
+print(stuff.pop())
+print(' '.join(stuff))
+print('#'.join(stuff[3:5]))
+
+
+#create a mapping states to abbreviation
+states = {
+    "Oregon": "OR",
+    "Florida": "FL",
+    "California": "CA",
+    "New York": "NY",
+    "Michigan": "MI"
+}
+
+#create a list of cities in states
+cities = {
+    "CA": "San Fransico",
+    "MI": "Detroit",
+    "FL": "Jacksonville"
+}
+
+#add some more cities
+cities["NY"] = "New York"
+cities["OR"] = "Portland"
+
+#print out cities
+print("-"*10)
+print("NY State has: ", cities["NY"])
+print("OR State has: ", cities["OR"])
+
+#print out states
+print("-"*10)
+print("Michigan abbreviation is: ", states["Michigan"])
+print("Florida abbreviation is: ", states["Florida"])
+
+#print every states abbreviation
+print("-"*10)
+for state, abbrev in list(states.items()):
+    print(f"{state} is abbreviated {abbrev}")
+
+#print every cities in states
+print("-"*10)
+for abbrev, city in list(cities.items()):
+    print(f"In {abbrev} has the city {city}")
+
+state = states.get("Texas")
+#Do not Exist
+city = cities.get(state, "DnE")
+
+if not state:
+    print("Sorry, there's no Texas.")
+    print(f"The city of {state} is: {city}")
+
 
