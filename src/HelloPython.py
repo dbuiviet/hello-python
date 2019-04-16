@@ -2,6 +2,7 @@
 import sys  #import sys library
 from sys import argv
 from os.path import exists
+import json #for storing data
 
 print(sys.platform)
 
@@ -411,5 +412,9 @@ while True:
     else:
         print(answer)
 
+user_name = input("What is your name? ")
+file_name_json = 'user_name.json'
+with open(file_name_json,'w') as f_obj:
+    json.dump(user_name,f_obj)
 
 
