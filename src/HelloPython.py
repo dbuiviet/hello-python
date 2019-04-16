@@ -394,3 +394,22 @@ if not state:
     print(f"The city of {state} is: {city}")
 
 
+#handle exception
+print("Input 2 numbers, press 'q' to quit")
+while True:
+    first_number = input("\nEnter first number: ")
+    if first_number == 'q':
+        break
+    second_number = input("\nEnter second number: ")
+    if second_number == 'q':
+        break
+
+    try:
+        answer = int(first_number)/int(second_number)
+    except ZeroDivisionError:
+        print("You can't divide by zero!")
+    else:
+        print(answer)
+
+
+
