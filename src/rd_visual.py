@@ -1,7 +1,7 @@
-import sys
+# import sys
 
-#sys.path.append('/home/dbuiviet/Workspaces/Python/hello-python/src')
-sys.path.insert(0, '/home/dbuiviet/Workspaces/Python/hello-python/src')
+# #sys.path.append('/home/dbuiviet/Workspaces/Python/hello-python/src')
+# sys.path.insert(0, '/home/dbuiviet/Workspaces/Python/hello-python/src')
 
 import pygal
 
